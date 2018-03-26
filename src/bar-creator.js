@@ -2,7 +2,7 @@ import Grid from './grid';
 import transformTable from './transform-table';
 import csvToJson from './data-loader';
 
-class barChart extends Grid {
+class BarChart extends Grid {
   // to convert the  CSV Data into JSON
   getBarData(csv) {
     // Contains JSON converted Data from CSV
@@ -166,5 +166,5 @@ class barChart extends Grid {
   }
 }
 
-export default barChart;
+export default BarChart;
 
