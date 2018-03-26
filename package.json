@@ -1,0 +1,34 @@
+{
+  "name": "bar-table-interaction",
+  "version": "1.0.0",
+  "description": "bar-Table Interaction",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "cd dist && http-server"
+  },
+  "keywords": [
+    "Webpack",
+    "babel",
+    "webpack",
+    "Canvas",
+    "d3"
+  ],
+  "dependencies": {
+    "http-server": "^0.11.1",
+    "mobx": "^4.0.1",
+    "webpack": "^4.2.0"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.1.3",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^4.19.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.9.0",
+    "ts-loader": "^4.0.1",
+    "webpack-cli": "^2.0.13"
+  },
+  "author": "Sanjay Mahto",
+  "license": "ISC"
+}
