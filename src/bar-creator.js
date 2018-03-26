@@ -74,67 +74,65 @@ class BarChart extends Grid {
       .attr('transform', `translate(${margin.left},${margin.top})`);
 
 
-    (() => {
-      x.domain(this.chartArray.map(d => d.name));
-      y.domain([0, d3.max(this.chartArray, d => d.count)]);
+    x.domain(this.chartArray.map(d => d.name));
+    y.domain([0, d3.max(this.chartArray, d => d.count)]);
 
-      g.append('g')
-        .attr('class', 'axis axis--x')
-        .attr('transform', `translate(0,${height})`)
-        .call(d3.axisBottom(x))
-        .selectAll('text')
-        .style('text-anchor', 'end')
-        .attr('dx', '-.8em')
-        .attr('dy', '.15em')
-        .attr('transform', 'rotate(-65)');
+    g.append('g')
+      .attr('class', 'axis axis--x')
+      .attr('transform', `translate(0,${height})`)
+      .call(d3.axisBottom(x))
+      .selectAll('text')
+      .style('text-anchor', 'end')
+      .attr('dx', '-.8em')
+      .attr('dy', '.15em')
+      .attr('transform', 'rotate(-65)');
 
-      g.append('g')
-        .attr('class', 'axis axis--y')
-        .call(d3.axisLeft(y).ticks(10))
-        .append('text')
-        .attr('transform', 'rotate(-90)')
-        .attr('y', 6)
-        .attr('dy', '0.71em')
-        .attr('text-anchor', 'end')
-        .text('count');
+    g.append('g')
+      .attr('class', 'axis axis--y')
+      .call(d3.axisLeft(y).ticks(10))
+      .append('text')
+      .attr('transform', 'rotate(-90)')
+      .attr('y', 6)
+      .attr('dy', '0.71em')
+      .attr('text-anchor', 'end')
+      .text('count');
 
-      g.selectAll('.bar')
-        .data(this.chartArray)
-        .enter().append('rect')
-        .attr('class', 'bar')
-        .attr('x', d => x(d.name))
-        .attr('y', d => y(d.count))
-        .attr('width', x.bandwidth())
-        .attr('height', d => height - y(d.count))
-        .attr('fill', '#89B1F0')
-        .on('click', function (d, i) {
-          const children = this.parentNode.childNodes;
-          for (let c = 2; c < children.length - 2; c += 1) {
-            if ((c - 2) === i) {
-              d3.select(children[c]).attr('fill', '#684677');
-            } else {
-              d3.select(children[c]).attr('fill', '#89B1F0');
-            }
+    g.selectAll('.bar')
+      .data(this.chartArray)
+      .enter().append('rect')
+      .attr('class', 'bar')
+      .attr('x', d => x(d.name))
+      .attr('y', d => y(d.count))
+      .attr('width', x.bandwidth())
+      .attr('height', d => height - y(d.count))
+      .attr('fill', '#89B1F0')
+      .on('click', function (d, i) {
+        const children = this.parentNode.childNodes;
+        for (let c = 2; c < children.length - 2; c += 1) {
+          if ((c - 2) === i) {
+            d3.select(children[c]).attr('fill', '#684677');
+          } else {
+            d3.select(children[c]).attr('fill', '#89B1F0');
           }
-          grid.filterCanvas(d);
-        })
-        .on('dblclick', function () {
-          d3.select(this)
-            .attr('fill', '#89B1F0');
-          grid.restoreCanvas();
-        });
+        }
+        grid.filterCanvas(d);
+      })
+      .on('dblclick', function () {
+        d3.select(this)
+          .attr('fill', '#89B1F0');
+        grid.restoreCanvas();
+      });
 
-      // to add titles to the axes
-      g.append('text')
-        .attr('text-anchor', 'middle') // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr('transform', `translate(${-30},${height / 2})rotate(-90)`) // text is drawn off the screen top left, move down and out and rotate
-        .text('Car Variants');
+    // to add titles to the axes
+    g.append('text')
+      .attr('text-anchor', 'middle') // this makes it easy to centre the text as the transform is applied to the anchor
+      .attr('transform', `translate(${-30},${height / 2})rotate(-90)`) // text is drawn off the screen top left, move down and out and rotate
+      .text('Car Variants');
 
-      g.append('text')
-        .attr('text-anchor', 'middle') // this makes it easy to centre the text as the transform is applied to the anchor
-        .attr('transform', `translate(${width / 2},${height + 80})`) // centre below axis
-        .text('Car Companies');
-    })();
+    g.append('text')
+      .attr('text-anchor', 'middle') // this makes it easy to centre the text as the transform is applied to the anchor
+      .attr('transform', `translate(${width / 2},${height + 80})`) // centre below axis
+      .text('Car Companies');
   }
 
   // filter the Canvas
