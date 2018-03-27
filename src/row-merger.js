@@ -1,8 +1,13 @@
+/**
+ * @description function to merge the rows in table.
+ * @param  {} mergeRowObject
+ * @return null
+ */
 export default function mergerow(mergeRowObject) {
-  const [column, startRow, endRow, context, canvas, data, previousStateArray]
- = [mergeRowObject.column, mergeRowObject.startRow, mergeRowObject.endRow,
-   mergeRowObject.context, mergeRowObject.canvas, mergeRowObject.data,
-   mergeRowObject.previousStateArray, mergeRowObject.previousStateArray];
+  const {
+    column, startRow, endRow, context, canvas, data, previousStateArray,
+  }
+ = mergeRowObject;
 
   const bw = (Object.keys(data[0]).length) * 200; // Calculating Border Width
   const bh = (data.length + 1) * 40; // Calculating Border Height

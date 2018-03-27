@@ -4,7 +4,12 @@ import drawCanvas from './table-grid';
 import mergerow from './row-merger';
 import mergecol from './column-merger';
 
+/** Class representing a Grid. */
 class Grid {
+  /**
+   * create a Grid
+   * @param  {String} canvasId
+   */
   // initialising contructor for class Grid
   constructor(canvasId) {
     // Initialising a flag to stop the user form re-pivoting if once pivoted the Table.
@@ -39,6 +44,11 @@ class Grid {
     this.pageCount = 1;
   }
 
+
+  /**
+   * function to get CSV data
+   * @param  {String} csv
+   */
   // to convert the  CSV Data into JSON
   getData(csv) {
     // Contains JSON converted Data from CSV
@@ -48,6 +58,13 @@ class Grid {
     autorun(() => this.render());
   }
 
+
+  /**
+   * @description render the Table on the Canvas
+   * @param  {} this.canvas
+   * @param  {} this.data
+   * @param  {} this.pageCount
+   */
   // to render table in Canvas
   render() {
     // merge Flag variable
@@ -71,6 +88,12 @@ class Grid {
     this.context.save();
   }
 
+
+  /**
+   * @description Function to merge the Row of table
+   * @param  {} ...rowParams
+   * @return null
+   */
   // to merge Rows...
   mergeRow(...rowParams) {
     if (this.pivotFlag === 0) {
@@ -98,6 +121,12 @@ class Grid {
     return null;
   }
 
+
+  /**
+   * @description Function to merge the column of table
+   * @param  {} ...colParams
+   * @return null
+   */
   // to merge Columns...
   mergeColumn(...colParams) {
     if (this.pivotFlag === 0) {
@@ -123,6 +152,12 @@ class Grid {
     return null;
   }
 
+  /**
+   * @description To increment the page count
+   * @param  {} this.canvas
+   * @param  {} this.data
+   * @param  {} this.pageCount
+   */
   // logic to redraw the Canvas when the page is incremented
   pageIncrementCanvas() {
     // incrementing the page
@@ -148,6 +183,13 @@ class Grid {
     drawCanvas(this.context, this.canvas, this.data, this.pageCount);
   }
 
+
+  /**
+   * @description Function to decrement the page of table
+    * @param  {} this.canvas
+   * @param  {} this.data
+   * @param  {} this.pageCount
+   */
   // logic to redraw the Canvas when the page is decremented
   pageDecrementCanvas() {
     // Decrementing the page

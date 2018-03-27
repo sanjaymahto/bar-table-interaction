@@ -1,9 +1,13 @@
+/**
+ * @description function to merge the columns in table.
+ * @param  {} mergecolObject
+ * @return null
+ */
 export default function mergecol(mergeColObject) {
-  const [Row, startColumn, endColumn, context, canvas,
-    data, previousColumnStateArray] = [mergeColObject.Row,
-    mergeColObject.startColumn, mergeColObject.endColumn,
-    mergeColObject.context, mergeColObject.canvas,
-    mergeColObject.data, mergeColObject.previousColumnStateArray];
+  const {
+    Row, startColumn, endColumn, context, canvas,
+    data, previousColumnStateArray,
+  } = mergeColObject;
 
   // to get the previous states...
   const stateArray = JSON.parse(sessionStorage.getItem('previousColumnState'));

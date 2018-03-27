@@ -1,3 +1,10 @@
+/**
+ * @description function to create table in canvas and populate the it with data.
+ * @param  {String} context
+ * @param  {String} canvas
+ * @param  {JSON} data
+ * @param  {Number} pageCount
+ */
 export default function drawCanvas(context, canvas, data, pageCount) {
   // To clear the canvas before drawing or redrawing the Canvas
   context.clearRect(0, 0, canvas.width, canvas.height);

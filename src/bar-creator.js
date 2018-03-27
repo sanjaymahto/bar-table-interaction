@@ -2,13 +2,23 @@ import Grid from './grid';
 import transformTable from './transform-table';
 import csvToJson from './data-loader';
 
+/** @description Barchart extending Grid. */
 class BarChart extends Grid {
+  /**
+   * @description function to convert CSV data to JSON
+   * @param  {} csv
+   */
   // to convert the  CSV Data into JSON
   getBarData(csv) {
     // Contains JSON converted Data from CSV
     this.data = JSON.parse(csvToJson(csv));
   }
 
+
+  /**
+   * @description Function to filter the required Json data from Original Csv data sent.
+   * @param  {JSON} JSON data
+   */
   // to render d3 chart from CSV data
   getD3Data() {
     const tempArray = this.data.slice();
@@ -56,6 +66,10 @@ class BarChart extends Grid {
     // console.log('new d3 array: ', this.chartArray);
   }
 
+
+  /**
+   * @description Creating a bar chart from csv Data.
+   */
   // to create d3 chart
   createBarChart() {
     // creating a local variable for this refrence of the Class
@@ -106,7 +120,7 @@ class BarChart extends Grid {
       .attr('width', x.bandwidth())
       .attr('height', d => height - y(d.count))
       .attr('fill', '#89B1F0')
-      .on('click', function (d, i) {
+      .on('click', function clickEvent(d, i) {
         const children = this.parentNode.childNodes;
         for (let c = 2; c < children.length - 2; c += 1) {
           if ((c - 2) === i) {
@@ -117,7 +131,7 @@ class BarChart extends Grid {
         }
         grid.filterCanvas(d);
       })
-      .on('dblclick', function () {
+      .on('dblclick', function doubleClickEvent() {
         d3.select(this)
           .attr('fill', '#89B1F0');
         grid.restoreCanvas();
@@ -135,6 +149,11 @@ class BarChart extends Grid {
       .text('Car Companies');
   }
 
+
+  /**
+   * @description filtering the canvas while interacting with the bar chart.
+   * @param  {object} d
+   */
   // filter the Canvas
   filterCanvas(d) {
     // logic to hide the pagination tags
@@ -150,6 +169,10 @@ class BarChart extends Grid {
     transformTable(this.context, this.canvas, d, this.data);
   }
 
+
+  /**
+   * @description Function to restrore the Canvas on doubleclicking the bar
+   */
   // to restore the canvas
   restoreCanvas() {
     // logic to reshow the pagination tags

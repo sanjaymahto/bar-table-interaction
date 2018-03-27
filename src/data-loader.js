@@ -1,3 +1,9 @@
+/**
+ * @description function to convert csv to JSON.
+ * @param  {String} csv
+ * @return  {String} JSON string
+ */
+
 // var csv is the CSV file with headers
 export default function csvToJson(csv) {
   const lines = csv.split('\n');
@@ -16,6 +22,7 @@ export default function csvToJson(csv) {
 
     result.push(obj);
   }
+
   // return result; //JavaScript object
   return JSON.stringify(result); // JSON
 }

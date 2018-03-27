@@ -1,3 +1,10 @@
+/**
+ * @description function to change the canvas while interacting with the bar Chart.
+ * @param  {String} context
+ * @param  {String} canvas
+ * @param  {object} d
+ * @param  {JSON} data
+ */
 
 export default function transformTable(context, canvas, d, data) {
   let count = 1;
