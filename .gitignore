@@ -5,3 +5,4 @@
 
 # ignore files
 .vscode
+.DS_Store
