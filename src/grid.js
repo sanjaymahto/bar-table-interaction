@@ -7,7 +7,7 @@ import mergecol from './column-merger';
 /** Class representing a Grid. */
 class Grid {
   /**
-   * create a Grid
+   *@description create a class Grid
    * @param  {String} canvasId
    */
   // initialising contructor for class Grid
@@ -46,7 +46,7 @@ class Grid {
 
 
   /**
-   * function to get CSV data
+   *@description function to get CSV data
    * @param  {String} csv
    */
   // to convert the  CSV Data into JSON

@@ -18,6 +18,7 @@ class BarChart extends Grid {
   /**
    * @description Function to filter the required Json data from Original Csv data sent.
    * @param  {JSON} JSON data
+   * @function getD3Data()
    */
   // to render d3 chart from CSV data
   getD3Data() {
@@ -69,6 +70,7 @@ class BarChart extends Grid {
 
   /**
    * @description Creating a bar chart from csv Data.
+   * @function createBarChart()
    */
   // to create d3 chart
   createBarChart() {
