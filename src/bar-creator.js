@@ -113,9 +113,10 @@ class BarChart extends Grid {
       .attr('text-anchor', 'end')
       .text('count');
 
-    g.selectAll('.bar')
-      .data(this.chartArray)
-      .enter().append('rect')
+    const bar = g.selectAll('.bar')
+      .data(this.chartArray);
+    bar.exit().remove();
+    bar.enter().append('rect')
       .attr('class', 'bar')
       .attr('x', d => x(d.name))
       .attr('y', d => y(d.count))

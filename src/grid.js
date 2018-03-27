@@ -164,7 +164,7 @@ class Grid {
     this.pageCount = this.pageCount + 1;
 
     // to put upper bound check on page...
-    if (this.pageCount > (this.data.length / 10)) {
+    if (this.pageCount >= (this.data.length / 10)) {
       this.pageCount = (this.data.length / 10);
     }
 
@@ -196,7 +196,7 @@ class Grid {
     this.pageCount = this.pageCount - 1;
 
     // to put lower bound check on page...
-    if (this.pageCount < 1) {
+    if (this.pageCount <= 1) {
       this.pageCount = 1;
     }
 
