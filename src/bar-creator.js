@@ -144,6 +144,18 @@ class BarChart extends Grid {
       .attr('text-anchor', 'middle') // this makes it easy to centre the text as the transform is applied to the anchor
       .attr('transform', `translate(${width / 2},${height + 80})`) // centre below axis
       .text('Car Companies');
+
+    g.append('text')
+      .attr('text-anchor', 'middle') // this makes it easy to centre the text as the transform is applied to the anchor
+      .attr('transform', `translate(${(width / 2) + (width / 4)},${height - 200})`) // centre below axis
+      .style('font-size', '15px')
+      .text('Click on the bars to filter the car variants');
+
+    g.append('text')
+      .attr('text-anchor', 'middle') // this makes it easy to centre the text as the transform is applied to the anchor
+      .attr('transform', `translate(${(width / 2) + (width / 4)},${height - 180})`) // centre below axis
+      .style('font-size', '15px')
+      .text('Double click on the bars to Rerender the Original Table');
   }
   /**
    * @description filtering the canvas while interacting with the bar chart.

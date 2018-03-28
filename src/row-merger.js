@@ -1,4 +1,4 @@
-import { rowState, columnState } from './state-management';
+import { rowState, columnState } from './store';
 /**
  * @description function to merge the rows in table.
  * @param  {} mergeRowObject
