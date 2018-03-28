@@ -10,9 +10,7 @@
     "start": "http-server"
   },
   "keywords": [
-    "Webpack",
-    "babel",
-    "webpack",
+    "bar-table-interaction",
     "Canvas",
     "d3"
   ],
