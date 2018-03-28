@@ -21,12 +21,6 @@ class Grid {
     // Initializing data array
     this.data = [];
 
-    // Defining an array to save the current state of Row
-    this.previousStateArray = [];
-
-    // Defining an array to save the current state of Column
-    this.previousColumnStateArray = [];
-
     // Obtaining a reference to the canvas element.
     this.canvas = document.getElementById(canvasId);
 
@@ -112,7 +106,6 @@ class Grid {
         context: this.context,
         canvas: this.canvas,
         data: this.data,
-        previousStateArray: this.previousStateArray,
       };
 
       observable(rowParams);
@@ -145,7 +138,6 @@ class Grid {
         context: this.context,
         canvas: this.canvas,
         data: this.data,
-        previousColumnStateArray: this.previousColumnStateArray,
       };
       observable(colParams);
       autorun(() => mergecol(tempColObject));
