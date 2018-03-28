@@ -11,12 +11,10 @@ export default function mergecol(mergeColObject) {
   } = mergeColObject;
 
   // to get the previous states...
-  // const stateArray = JSON.parse(sessionStorage.getItem('previousColumnState'));
   const stateArray = columnState('columnStateArray');
   // console.log('Previous Column State array: ', stateArray);
 
   // to get the previous row State...
-  // const rowStateArray = JSON.parse(sessionStorage.getItem('previousState'));
   const rowStateArray = rowState('rowStateArray');
   // console.log('Previous Row State array: ', rowStateArray);
 
@@ -134,9 +132,6 @@ export default function mergecol(mergeColObject) {
       endColumn,
     };
 
-    // previousColumnStateArray.push(state);
-
-    // sessionStorage.setItem('previousColumnState', JSON.stringify(previousColumnStateArray));
     columnState('columnStateArray').push(state);
   }
   return null;

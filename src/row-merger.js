@@ -14,12 +14,10 @@ export default function mergerow(mergeRowObject) {
   const bh = (data.length + 1) * 40; // Calculating Border Height
   const p = 10; // margin
   // to get the previous states...
-  // const stateArray = JSON.parse(sessionStorage.getItem('previousState'));
   const stateArray = rowState('rowStateArray');
   // console.log('Previous State array: ', stateArray);
 
   // to get the previous column state...
-  // const columnStateArray = JSON.parse(sessionStorage.getItem('previousColumnState'));
   const columnStateArray = columnState('columnStateArray');
   // console.log('Previous Column State array: ', columnStateArray);
 
@@ -86,9 +84,7 @@ export default function mergerow(mergeRowObject) {
 
     const keys = Object.keys(data[0]); // finding keys in each JSON object
 
-    // console.log("Total keys in each JSON object: ",keys);
-
-    // //To print the values of the Table Excluding Header...
+    // To print the values of the Table Excluding Header...
     for (let y = 80, count = 0; y <= bh; y += 40) {
       for (let x = 0, keyCount = 0; x < bw; x += 200) {
         context.font = 'normal 16px Verdana';
@@ -115,10 +111,6 @@ export default function mergerow(mergeRowObject) {
       startRow,
       endRow,
     };
-
-    // previousStateArray.push(state);
-
-    // sessionStorage.setItem('previousState', JSON.stringify(previousStateArray));
 
     rowState('rowStateArray').push(state);
   }
