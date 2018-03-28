@@ -1,3 +1,4 @@
+import { rowState, columnState } from './state-management';
 /**
  * @description function to merge the columns in table.
  * @param  {} mergecolObject
@@ -6,15 +7,17 @@
 export default function mergecol(mergeColObject) {
   const {
     Row, startColumn, endColumn, context, canvas,
-    data, previousColumnStateArray,
+    data,
   } = mergeColObject;
 
   // to get the previous states...
-  const stateArray = JSON.parse(sessionStorage.getItem('previousColumnState'));
+  // const stateArray = JSON.parse(sessionStorage.getItem('previousColumnState'));
+  const stateArray = columnState('columnStateArray');
   // console.log('Previous Column State array: ', stateArray);
 
   // to get the previous row State...
-  const rowStateArray = JSON.parse(sessionStorage.getItem('previousState'));
+  // const rowStateArray = JSON.parse(sessionStorage.getItem('previousState'));
+  const rowStateArray = rowState('rowStateArray');
   // console.log('Previous Row State array: ', rowStateArray);
 
   const bw = (Object.keys(data[0]).length) * 200; // Calculating Border Width
@@ -29,7 +32,7 @@ export default function mergecol(mergeColObject) {
         for (let i = rowStateArray[rowStateIndex].startRow;
           i <= rowStateArray[rowStateIndex].endRow; i += 1) {
           if ((Row - 1) === i) {
-            return alert('Invalid Argument Passed!');
+            throw new Error('Invalid Argument Passed!');
           }
         }
       }
@@ -45,13 +48,11 @@ export default function mergecol(mergeColObject) {
         if (startColumn >= stateArray[stateIndex].startColumn &&
            startColumn <= stateArray[stateIndex].endColumn) {
           stateFlag = 2;
-          alert('Invalid argument passed!');
-          break;
+          throw new Error('Invalid Argument Passed!');
         } else if (endColumn >= stateArray[stateIndex].startColumn &&
            endColumn <= stateArray[stateIndex].endColumn) {
           stateFlag = 2;
-          alert('Invalid argument passed!');
-          break;
+          throw new Error('Invalid Argument Passed!');
         }
       }
     }
@@ -133,9 +134,10 @@ export default function mergecol(mergeColObject) {
       endColumn,
     };
 
-    previousColumnStateArray.push(state);
+    // previousColumnStateArray.push(state);
 
-    sessionStorage.setItem('previousColumnState', JSON.stringify(previousColumnStateArray));
+    // sessionStorage.setItem('previousColumnState', JSON.stringify(previousColumnStateArray));
+    columnState('columnStateArray').push(state);
   }
   return null;
 }

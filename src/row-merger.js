@@ -1,3 +1,4 @@
+import { rowState, columnState } from './state-management';
 /**
  * @description function to merge the rows in table.
  * @param  {} mergeRowObject
@@ -5,7 +6,7 @@
  */
 export default function mergerow(mergeRowObject) {
   const {
-    column, startRow, endRow, context, canvas, data, previousStateArray,
+    column, startRow, endRow, context, canvas, data,
   }
  = mergeRowObject;
 
@@ -13,11 +14,13 @@ export default function mergerow(mergeRowObject) {
   const bh = (data.length + 1) * 40; // Calculating Border Height
   const p = 10; // margin
   // to get the previous states...
-  const stateArray = JSON.parse(sessionStorage.getItem('previousState'));
+  // const stateArray = JSON.parse(sessionStorage.getItem('previousState'));
+  const stateArray = rowState('rowStateArray');
   // console.log('Previous State array: ', stateArray);
 
   // to get the previous column state...
-  const columnStateArray = JSON.parse(sessionStorage.getItem('previousColumnState'));
+  // const columnStateArray = JSON.parse(sessionStorage.getItem('previousColumnState'));
+  const columnStateArray = columnState('columnStateArray');
   // console.log('Previous Column State array: ', columnStateArray);
 
   if (columnStateArray != null) {
@@ -27,7 +30,7 @@ export default function mergerow(mergeRowObject) {
         if ((columnStateArray[columnStateIndex].row - 1) === i1) {
           if (column >= columnStateArray[columnStateIndex].startColumn &&
             column <= columnStateArray[columnStateIndex].endColumn) {
-            return alert('Invalid arguments passed!');
+            throw new Error('Invalid arguments passed!');
           }
         }
       }
@@ -42,13 +45,11 @@ export default function mergerow(mergeRowObject) {
         if (startRow >= stateArray[stateIndex].startRow &&
           startRow <= stateArray[stateIndex].endRow) {
           stateFlag = 2;
-          alert('Invalid argument passed!');
-          break;
+          throw new Error('Invalid Argument Passed!');
         } else if (endRow >= stateArray[stateIndex].startRow &&
            endRow <= stateArray[stateIndex].endRow) {
           stateFlag = 2;
-          alert('Invalid argument passed!');
-          break;
+          throw new Error('Invalid Argument Passed!');
         }
       }
     }
@@ -115,9 +116,11 @@ export default function mergerow(mergeRowObject) {
       endRow,
     };
 
-    previousStateArray.push(state);
+    // previousStateArray.push(state);
 
-    sessionStorage.setItem('previousState', JSON.stringify(previousStateArray));
+    // sessionStorage.setItem('previousState', JSON.stringify(previousStateArray));
+
+    rowState('rowStateArray').push(state);
   }
   return null;
 }

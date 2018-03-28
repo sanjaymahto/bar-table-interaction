@@ -61,9 +61,6 @@ class Grid {
 
   /**
    * @description render the Table on the Canvas
-   * @param  {} this.canvas
-   * @param  {} this.data
-   * @param  {} this.pageCount
    */
   // to render table in Canvas
   render() {
@@ -81,6 +78,12 @@ class Grid {
     // to scale the Canvas to fit into the canvas size
     this.context.scale(0.80, 0.80);
 
+    /**
+     * @param  {} this.context
+     * @param  {} this.canvas
+     * @param  {} this.data
+     * @param  {} this.pageCount
+     */
     // calling drawBoard function.
     drawCanvas(this.context, this.canvas, this.data, this.pageCount);
 
@@ -154,13 +157,10 @@ class Grid {
 
   /**
    * @description To increment the page count
-   * @param  {} this.canvas
-   * @param  {} this.data
-   * @param  {} this.pageCount
    */
   // logic to redraw the Canvas when the page is incremented
   pageIncrementCanvas() {
-    // incrementing the page
+  // incrementing the page
     this.pageCount = this.pageCount + 1;
 
     // to put upper bound check on page...
@@ -179,6 +179,12 @@ class Grid {
     // to scale the Canvas to fit into the canvas size
     this.context.scale(0.80, 0.80);
 
+    /**
+     * @param  {} this.context
+     * @param  {} this.canvas
+     * @param  {} this.data
+     * @param  {} this.pageCount
+     */
     // calling drawBoard function and sending ghte data for the pagnation.
     drawCanvas(this.context, this.canvas, this.data, this.pageCount);
   }
@@ -186,9 +192,6 @@ class Grid {
 
   /**
    * @description Function to decrement the page of table
-    * @param  {} this.canvas
-   * @param  {} this.data
-   * @param  {} this.pageCount
    */
   // logic to redraw the Canvas when the page is decremented
   pageDecrementCanvas() {
@@ -211,6 +214,12 @@ class Grid {
     // to scale the Canvas to fit into the canvas size
     this.context.scale(0.80, 0.80);
 
+    /**
+     * @param  {} this.context
+     * @param  {} this.canvas
+     * @param  {} this.data
+     * @param  {} this.pageCount
+     */
     // calling drawBoard function and sending ghte data for the pagnation.
     drawCanvas(this.context, this.canvas, this.data, this.pageCount);
   }

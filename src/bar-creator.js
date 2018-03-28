@@ -1,3 +1,4 @@
+import * as d3 from 'd3';
 import Grid from './grid';
 import transformTable from './transform-table';
 import csvToJson from './data-loader';
@@ -5,16 +6,13 @@ import csvToJson from './data-loader';
 /** @description Barchart extending Grid. */
 class BarChart extends Grid {
   /**
-   * @description function to convert CSV data to JSON
-   * @param  {} csv
+   *@description Function to get the CSV data from user and convert it to JSON.
+   * @param {*} csv
    */
-  // to convert the  CSV Data into JSON
   getBarData(csv) {
     // Contains JSON converted Data from CSV
     this.data = JSON.parse(csvToJson(csv));
   }
-
-
   /**
    * @description Function to filter the required Json data from Original Csv data sent.
    * @param  {JSON} JSON data
@@ -66,13 +64,9 @@ class BarChart extends Grid {
     }
     // console.log('new d3 array: ', this.chartArray);
   }
-
-
   /**
-   * @description Creating a bar chart from csv Data.
-   * @function createBarChart()
+   * @description function to create bar chart.
    */
-  // to create d3 chart
   createBarChart() {
     // creating a local variable for this refrence of the Class
     const grid = this;
@@ -151,8 +145,6 @@ class BarChart extends Grid {
       .attr('transform', `translate(${width / 2},${height + 80})`) // centre below axis
       .text('Car Companies');
   }
-
-
   /**
    * @description filtering the canvas while interacting with the bar chart.
    * @param  {object} d
@@ -171,8 +163,6 @@ class BarChart extends Grid {
 
     transformTable(this.context, this.canvas, d, this.data);
   }
-
-
   /**
    * @description Function to restrore the Canvas on doubleclicking the bar
    */
